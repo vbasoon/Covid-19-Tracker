@@ -2,10 +2,13 @@ import React, {useState,useEffect} from 'react'
 import {
   FormControl,
   Select,
-  MenuItem
+  MenuItem,
+  Card,
+  CardContent
 } from '@material-ui/core'
 import './App.css';
 import InfoBox from './InfoBox';
+import Map from './Map';
 
 function App() {
   const [countries, setCountries] = useState(['USA','UK','Ukraine']);
@@ -34,9 +37,10 @@ function App() {
   }
   return (
     <div className="App">
-      <div className="app__header">
+      <div className="app__left">
+        <div className="app__header">
       <h1>Covid Tracker</h1>
-      <FormControl className="app_dropdown">
+      <FormControl className="app__dropdown">
         <Select 
           variant="outlined"
           onChange={onCountryChange}
@@ -64,6 +68,18 @@ function App() {
 
   
 </div>
+<div>
+  <Map/>
+</div> 
+<Card className="app__right">
+  <CardContent>
+      {/*Table
+      Graph*/}
+  </CardContent>
+</Card>
+</div>
+     
+      
 
       {/*
       Header
@@ -73,8 +89,7 @@ function App() {
       Infobox
       Infobox
 
-      Table
-      Graph
+     
       Map 
       */}
 
