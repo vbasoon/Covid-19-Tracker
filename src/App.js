@@ -5,6 +5,7 @@ import {
   MenuItem
 } from '@material-ui/core'
 import './App.css';
+import InfoBox from './InfoBox';
 
 function App() {
   const [countries, setCountries] = useState(['USA','UK','Ukraine']);
@@ -53,8 +54,16 @@ function App() {
           <MenuItem value="worldWide">Option 4</MenuItem>   */}
         </Select>
       </FormControl>
+</div>
+<div className="app__stats">
+  <InfoBox title="Covid-19 cases" cases={123} total={20000}/>
 
+  <InfoBox title="Recovered" cases={1234} total={19000}/>
 
+  <InfoBox title="Deaths" cases={12345} total={1000}/>
+
+  
+</div>
 
       {/*
       Header
@@ -68,7 +77,7 @@ function App() {
       Graph
       Map 
       */}
-</div>
+
     </div>
   );
 }
