@@ -36,63 +36,39 @@ function App() {
 
   }
   return (
-    <div className="App">
+    <div className="app">
       <div className="app__left">
         <div className="app__header">
-      <h1>Covid Tracker</h1>
-      <FormControl className="app__dropdown">
-        <Select 
-          variant="outlined"
-          onChange={onCountryChange}
-          value={country}
-        >
-<MenuItem value="worldWide">Worlwide</MenuItem>
-          {
-            countries.map((country) =>(
-              <MenuItem value={country.value}>{country.name}</MenuItem>
-            ))
-          }
-          {/* 
-          <MenuItem value="worldWide">Option 2</MenuItem>
-          <MenuItem value="worldWide">Option 3</MenuItem>
-          <MenuItem value="worldWide">Option 4</MenuItem>   */}
-        </Select>
-      </FormControl>
-</div>
-<div className="app__stats">
-  <InfoBox title="Covid-19 cases" cases={123} total={20000}/>
-
-  <InfoBox title="Recovered" cases={1234} total={19000}/>
-
-  <InfoBox title="Deaths" cases={12345} total={1000}/>
-
-  
-</div>
-<div>
-  <Map/>
-</div> 
-<Card className="app__right">
-  <CardContent>
-      {/*Table
-      Graph*/}
-  </CardContent>
-</Card>
-</div>
-     
-      
-
-      {/*
-      Header
-      Title + Select input dropdown field
-
-      Infobox
-      Infobox
-      Infobox
-
-     
-      Map 
-      */}
-
+          <h1>Covid Tracker</h1>
+          <FormControl className="app__dropdown">
+            <Select 
+              variant="outlined"
+              onChange={onCountryChange}
+              value={country}
+            >
+              <MenuItem value="worldWide">Worlwide</MenuItem>
+              {
+                countries.map((country) =>(
+                  <MenuItem value={country.value}>{country.name}</MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        </div>
+        <div className="app__stats">
+          <InfoBox title="Covid-19 cases" cases={123} total={20000}/>
+          <InfoBox title="Recovered" cases={1234} total={19000}/>
+          <InfoBox title="Deaths" cases={12345} total={1000}/>
+        </div>
+        <div className="Map">
+          <Map/>
+        </div> 
+      </div>
+      <Card className="app__right">
+        <CardContent>
+          <h3>Live Cases by Country</h3>
+          <h3>Worldwide new cases</h3>
+        </CardContent>
+      </Card>
     </div>
   );
 }
