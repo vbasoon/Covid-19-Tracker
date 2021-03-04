@@ -14,7 +14,7 @@ import { sortData } from "./utils";
 import LineGraph from "./LineGraph";
 
 function App() {
-  const [countries, setCountries] = useState(["USA", "UK", "Ukraine"]);
+  const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
@@ -24,7 +24,8 @@ function App() {
     fetch(`https://disease.sh/v3/covid-19/all`)
       .then((response) => response.json())
       .then((data) => {
-        setCountry(data);
+        //set CountryInfo(data)
+        setCountryInfo(data);
       });
   }, []);
 
@@ -59,13 +60,14 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setCountry(countryCode);
-
         setCountryInfo(data);
+        // countryCode === "worldwide"
+        //   ? setMapCenter([34.80746, -40.4796])
+        //   : setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        // setZoom(4);
       });
   };
-
   console.log("COUNTRY INFO>>>", countryInfo);
-
   return (
     <div className="app">
       <div className="app__left">
@@ -77,7 +79,9 @@ function App() {
               onChange={onCountryChange}
               value={country}
             >
-              <MenuItem value="worldwide">WorldWide</MenuItem>
+              <MenuItem value="worldwide" default>
+                WorldWide
+              </MenuItem>
               {countries.map((country) => (
                 <MenuItem key={country.name} value={country.value}>
                   {country.name}
