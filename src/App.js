@@ -27,7 +27,6 @@ function App() {
     fetch(`https://disease.sh/v3/covid-19/all`)
       .then((response) => response.json())
       .then((data) => {
-        //set CountryInfo(data)
         setCountryInfo(data);
       });
   }, []);
@@ -52,7 +51,6 @@ function App() {
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-    setCountry(countryCode);
 
     const url =
       countryCode === "worldwide"
@@ -64,13 +62,16 @@ function App() {
       .then((data) => {
         setCountry(countryCode);
         setCountryInfo(data);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4);
         // countryCode === "worldwide"
         //   ? setMapCenter([34.80746, -40.4796])
         //   : setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
         // setZoom(4);
+        console.log("COUNTRY INFO>>>", countryInfo);
       });
   };
-  console.log("COUNTRY INFO>>>", countryInfo);
+
   return (
     <div className="app">
       <div className="app__left">
@@ -82,9 +83,7 @@ function App() {
               onChange={onCountryChange}
               value={country}
             >
-              <MenuItem value="worldwide" default>
-                WorldWide
-              </MenuItem>
+              <MenuItem value="worldwide">WorldWide</MenuItem>
               {countries.map((country) => (
                 <MenuItem key={country.name} value={country.value}>
                   {country.name}
