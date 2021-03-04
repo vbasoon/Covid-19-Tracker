@@ -110,9 +110,7 @@ function App() {
             total={countryInfo.deaths}
           />
         </div>
-        <div className="map">
-          <Map center={mapCenter} zoom={mapZoom} />
-        </div>
+        <Map center={mapCenter} zoom={mapZoom} />
       </div>
       <Card className="app__right">
         <CardContent>
